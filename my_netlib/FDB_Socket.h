@@ -37,9 +37,9 @@ public:
     bool Socket_bindAddress();                                                  /*命名套接字*/
     bool Socket_listen(int backlog);                                            /*监听套接字*/
     bool Socket_setReusePort(bool on);                                          /*设置端口重用*/
+    bool Socket_setTimeOutRecnt(bool on);                                       /*设置超时重连*/
     int  Socket_setNoBlocking();                                                /*设置 m_iSockfd 为非阻塞*/
     int  Socket_getfd();                                                        /*获取套接字描述符 m_iSockfd*/
-
 
     int  Socket_do_accept();
     bool Socket_getbacklog();
@@ -52,8 +52,6 @@ public:
     bool Socket_getTcpInfo(struct tcp_info *) const;
     bool Socket_getTcpInfoString(char * buf, int len) const;
 */
-
-
 private:
 
     int m_iSockfd;

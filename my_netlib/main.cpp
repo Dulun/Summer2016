@@ -1,21 +1,13 @@
 #include <iostream>
-#include "FDB_Epoll.h"
-#include "FDB_Socket.h"
-#include <thread>
+#include "FDB_Server.h"
 
 static int fd;
 
-void funcA() {
-    std::cout << "Server start!" << std::endl;
-    FDB_Epoll epo(fd);
-    epo.Epoll_wait();
-
-}
 
 int main()
 {
-    FDB_Socket a(AF_INET, 10);
-    fd = a.Socket_getfd();
-    std::thread t1(funcA);
-    t1.join();
+    FDB_Server test_Server(true, 10086, 1);
+    test_Server.server_start();
+
+    return 0;
 }

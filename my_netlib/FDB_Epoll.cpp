@@ -47,6 +47,7 @@ bool FDB_Epoll::Epoll_add_initListen(int fd, bool enable_et){
 
     if(enable_et) {
         event.events |= EPOLLET;
+        /*event.events |= EPOLLONESHOT;*/
     }
     epoll_ctl(m_iEpoll_fd, EPOLL_CTL_ADD, fd, &event);                      /*向兴趣列表里添加监听事件*/
     return true;
@@ -181,10 +182,6 @@ bool FDB_Epoll::Epoll_wait() {                                              /*ep
     }/*end while(work_status)*/
 
 }
-
-
-
-
 
 
 

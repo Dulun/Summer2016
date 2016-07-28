@@ -112,6 +112,13 @@ bool FDB_Socket::Socket_setResuseAddr(bool on) {                                
 }
 
 
+bool FDB_Socket::Socket_setTimeOutRecnt(bool on){
+
+    int optval = on ? 1: 0;
+    ::setsockopt(m_iSockfd, SOL_SOCKET, SO_SNDTIMEO, &optval, static_cast<socklen_t>(sizeof optval));
+}
+
+
 int  FDB_Socket::Socket_setNoBlocking() {                   /*设置 m_iSockfd 为非阻塞*/
 
     int old_option = fcntl(m_iSockfd,F_GETFL);
